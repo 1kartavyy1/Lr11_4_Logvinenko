@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Валідація форми</title>
+  <style>
+    /* Основний стиль для контейнера форми */
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f5f5f5;
+    }
+    
+    .form-container {
+      width: 300px;
+      padding: 20px;
+      border-radius: 8px;
+      background-color: #ffffff;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    
+    label {
+      font-size: 1em;
+      color: #555;
+    }
+    
+    input[type="text"], input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    
+    .submit-btn {
+      width: 100%;
+      padding: 10px;
+      background-color: #28a745;
+      border: none;
+      border-radius: 4px;
+      color: white;
+      font-size: 1em;
+      cursor: pointer;
+    }
+    
+    .submit-btn:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>Форма реєстрації</h2>
+    <form id="userForm" onsubmit="return validateForm()">
+        <label for="name">Прізвище:</label>
+        <input type="text" id="name" name="name">
+        
+        <label for="surname">Ім'я:</label>
+        <input type="text" id="surname" name="surname">
+        
+        <label for="age">Вік:</label>
+        <input type="text" id="age" name="age">
+        
+        <input type="submit" value="Відправити">
+      </form>    
+  </div>
+
+  <script>
+   function validateForm() {
+  // Регулярні вирази для валідації
+  const namePattern = /^[A-ZА-ЯІЇЄ][a-zа-яіїє]+$/; // Починається з великої літери, потім малі
+  const surnamePattern = /^[A-ZА-ЯІЇЄ][a-zа-яіїє]+$/; // Починається з великої літери, потім малі
+  const agePattern = /^(1[89]|[2-9]\d)$/; // Вік від 18 до 99
+
+  // Зчитуємо значення полів форми
+  let name = document.getElementById("name").value;
+  let surname = document.getElementById("surname").value;
+  let age = document.getElementById("age").value;
+
+  // Перевірка прізвища
+  if (!surnamePattern.test(surname)) {
+    alert("Некоректне прізвище. Використовуйте лише літери, починайте з великої.");
+    return false;
+  }
+
+   // Перевірка імені
+   if (!namePattern.test(name)) {
+    alert("Некоректне ім'я. Використовуйте лише літери, починайте з великої.");
+    return false;
+  }
+
+  // Перевірка віку
+  if (!agePattern.test(age)) {
+    alert("Некоректний вік. Вкажіть число від 18 до 99.");
+    return false;
+  }
+
+  // Якщо всі перевірки пройдені, повертаємо true
+  alert("Дані введені коректно!");
+  return true;
+}
+
+  </script>
+
+</body>
+</html>

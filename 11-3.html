@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Валідація Форми</title>
+  <link rel="stylesheet" href="11-3.css">
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>Форма з валідацією</h2>
+    <form id="myForm" action="#" method="post">
+      <div class="form-group">
+        <label for="name">Ім'я:</label>
+        <input type="text" id="name" name="name" placeholder="Введіть ваше ім'я">
+      </div>
+      <div class="form-group">
+        <label for="age">Вік:</label>
+        <input type="text" id="age" name="age" placeholder="Введіть ваш вік">
+      </div>
+      <button type="submit">Надіслати</button>
+    </form>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+
+  <script>
+    $(document).ready(function() {
+      $("#myForm").validate({
+        rules: {
+          name: {
+            required: true,
+            pattern: /^[A-ZА-ЯІЇ][a-zа-яії]{1,}$/
+          },
+          age: {
+            required: true,
+            digits: true,
+            range: [1, 99]
+          }
+        },
+        messages: {
+          name: "Некоректне ім'я. Використовуйте лише літери та починайте з великої.",
+          age: "Вкажіть вік від 1 до 99."
+        }
+      });
+    });
+  </script>
+</body>
+</html>

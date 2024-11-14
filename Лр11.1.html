@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Варіант 1</title>
+    <link rel="stylesheet">
+    <style>
+        /* Фон затемнення */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Модальне вікно */
+        .modal {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        /* Кнопка закриття */
+        .close-btn {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay" id="modal">
+        <div class="modal">
+            <h2>Вітаємо!</h2>
+            <button class="close-btn" onclick="closeModal()">Закрити</button>
+        </div>
+    </div>
+    <script>
+          function closeModal() {
+            document.getElementById("modal").style.display = "none";
+        }
+        let timeout = setTimeout(() => {
+  alert("Будь ласка, заповніть форму.");
+}, 60000);
+
+// Скидання таймера при внесенні змін у форму
+document.querySelector("form").addEventListener("input", () => {
+  clearTimeout(timeout);
+});
+    </script>
+</body>
+</html>
