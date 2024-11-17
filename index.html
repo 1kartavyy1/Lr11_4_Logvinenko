@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Object</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Об'єкт Student</h1>
+
+    <div class="form">
+      <label>Ім'я: <input type="text" id="name" /></label>
+      <label>Прізвище: <input type="text" id="surname" /></label>
+      <label>Вік: <input type="number" id="age" /></label>
+      <label>Курс: <input type="number" id="course" /></label>
+      <button onclick="createStudent()">Створити студента</button>
+    </div>
+
+    <div class="actions">
+      <h2>Дії з об'єктом</h2>
+      <label>Змінити вік на: <input type="number" id="years" /></label>
+      <button onclick="student.GetOlder()">Змінити вік</button>
+
+      <label>Нове прізвище: <input type="text" id="newSurname" /></label>
+      <button onclick="student.ChangeSurname()">Змінити прізвище</button>
+
+      <button onclick="student.MoveToSecondCourse()">Перевести на наступний курс</button>
+    </div>
+
+    <div class="output">
+      <h2>Дані про студента</h2>
+      <p id="studentInfo">Студент ще не створений</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
